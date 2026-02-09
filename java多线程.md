@@ -6,8 +6,8 @@
 计算机资源的存储与访问 ; 本地的磁盘文件IO ; 网络通信IO;
 
 IO操作，涉及到文件的操作但是不涉及应用程序层面的交互，比如控制台的输出，外部网络通信传输等等，我们可以通过MappedByteBuffer直接内存映射文件 在FileChannel中 将操作系统分配给JVM用户对用户直接内存的操作权来执行指令操作；省去内核缓存区向JVM用户缓存区的数据拷贝；一次性获取channel中的文件长度对应的字节数组，然后put get指令进行；
-/*
- *         try (FileChannel sourceChannel = FileChannel.open(Paths.get("logs/javabetter/itwanger.txt"), StandardOpenOption.READ);
+************************************* 手动实现复制transfer() ********************************
+*          try (FileChannel sourceChannel = FileChannel.open(Paths.get("logs/javabetter/itwanger.txt"), StandardOpenOption.READ);
               FileChannel destinationChannel = FileChannel.open(Paths.get("logs/javabetter/itwanger2.txt"), StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.READ)) {
         
             long fileSize = sourceChannel.size();
