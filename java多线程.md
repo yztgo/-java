@@ -9,6 +9,12 @@ IO操作，涉及到文件的操作但是不涉及应用程序层面的交互，
 
 
 ************************************* 手动实现复制transfer() ********************************
+*      try (FileChannel sourceChannel = FileChannel.open(Paths.get("logs/javabetter/itwanger.txt"), StandardOpenOption.READ);
+       FileChannel destinationChannel = FileChannel.open(Paths.get("logs/javabetter/itwanger3.txt"), StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.READ)) {
+       sourceChannel.transferTo(0, sourceChannel.size(), destinationChannel);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }  
 *          try (FileChannel sourceChannel = FileChannel.open(Paths.get("logs/javabetter/itwanger.txt"), StandardOpenOption.READ);
               FileChannel destinationChannel = FileChannel.open(Paths.get("logs/javabetter/itwanger2.txt"), StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.READ)) {
         
