@@ -54,9 +54,13 @@ JVM 把栈里的 b 写入「目标直接内存」的第 i 个字节；
 网络通信之连接，InetAdress()类来封装new InetAdress【网络中的端口信息（网络IP , 端口号） 】 网络IP -> 计算机回环地址（负责内部通信 映射为回环网卡） 网络（局域）地址（负责网络内通信 物理网卡） 虚拟机（虚拟网卡的虚拟地址）
 IP表示：域名NDS eg: 本地的"localhost" 实际IPV4/IPV6 eg:127.0.0.1表示回环地址
 
-套接字：Socket抽象表示通信管道
+套接字：socket,DatagramSocket作为应用层 与 TCP|UDP/IP 协议族通信的中间软件抽象层，表现为一个封装了 TCP|UDP / IP协议族 的编程接口（API），
 ServerSocket：服务端的 “监听接口”（只负责等客户端来连接，不直接收发数据）监听fd是否就绪，就绪后转化为读状态就绪，抽象出Socket clientSocket = serverSocket.accept()后续全部交给socket处理；
-Socket：客户端 / 服务端的 “通信接口”（连接建立后，真正用来发 / 收数据的对象）。
+Socket / DatagramSocket ：客户端 / 服务端的 “通信接口”（连接建立后，真正用来发 / 收数据的对象）。
+
+
+应用层实现http协议，避免由于TCP字节流协议可能出现的粘包问题，http协议规定接收双方应用层程序需要按照协议规则进行封装和拆解，得到主要的字段信息；
+
 
 
 
